@@ -14,9 +14,44 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   Product.init({
-    name: DataTypes.STRING,
-    price: DataTypes.INTEGER,
-    unit: DataTypes.STRING,
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: {
+          args: true,
+          msg: 'NAMA tidak boleh kosong'
+        }
+      }
+    },
+    price: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      validate: {
+        notEmpty: {
+          args: true,
+          msg: 'HARGA tidak boleh kosong'
+        },
+        isInt: {
+          args: true,
+          msg: 'HARGA harus berupa angka'
+        },
+        min: {
+          args: [0],
+          msg: 'HARGA tidak boleh lebih kecil dari 0'
+        }
+      }
+    },
+    unit: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: {
+          args: true,
+          msg: "SATUAN tidak boleh kosong"
+        }
+      }
+    },
     SellerId: DataTypes.INTEGER
   }, {
     sequelize,
