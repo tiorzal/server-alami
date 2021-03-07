@@ -1,7 +1,8 @@
 const { Product } = require('../../models')
 module.exports = async (req,res,next) => {
+  console.log(req.params.id)
   const payload = {
-    SellerId: req.body.SELLER_ID
+    SellerId: +req.params.id
   }
 
   try {
