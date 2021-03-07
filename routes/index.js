@@ -1,8 +1,8 @@
 const MainRouter = require('express').Router()
 const MainController = require('../controllers')
 
-MainRouter.get('/:id', MainController.getProductBySellerId)
+MainRouter.get('/', MainController.getProductBySellerId)
 MainRouter.post('/', MainController.addProduct)
-MainRouter.get('/:key_word', MainController.findProduct)
+MainRouter.get('/search', MainController.findProduct)
 
 module.exports = MainRouter
